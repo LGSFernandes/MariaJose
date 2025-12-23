@@ -1,12 +1,13 @@
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(45deg, #f2faff, #e0f7fa);
-    color: #003366;
+    /* Fundo levemente mais escuro para gerar contraste com o container branco */
+    background: linear-gradient(135deg, #eef2f5 0%, #e6e9ed 100%);
+    color: #333333;
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column; /* Alterado para column */
-    justify-content: flex-start; /* Alterado para flex-start */
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
     transition: background 0.3s, color 0.3s;
@@ -14,89 +15,76 @@ body {
     box-sizing: border-box;
 }
 
+/* --- MODO ESCURO --- */
 body.dark-mode {
-    background: linear-gradient(45deg, #121212, #333);
-    color: #eee;
+    background: linear-gradient(45deg, #0b1120, #1a2236); /* Fundo mais profundo */
+    color: #f1f5f9;
 }
 
 .dark-mode .container {
-    background: rgba(30, 30, 30, 0.9);
-    box-shadow: 0 0 30px rgba(255,255,255,0.2);
+    background: rgba(26, 34, 50, 0.98); /* Container mais opaco e escuro */
+    box-shadow: 0 15px 50px rgba(0,0,0,0.5); /* Sombra forte para destacar */
+    border: 1px solid #2d3748; /* Borda sutil para definição */
 }
 
+/* CORREÇÃO: Título branco puro no modo escuro */
 .dark-mode h1 {
-    color: #ddd;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    color: #ffffff !important; 
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
-.dark-mode .btn {
-    box-shadow: 0 4px 6px rgba(255,255,255,0.1);
-    color: #ddd;
+.dark-mode p {
+    color: #cbd5e1; /* Texto de apoio mais claro */
 }
 
-.dark-mode .btn:hover {
-    box-shadow: 0 6px 8px rgba(255,255,255,0.15);
-}
-
+/* CORREÇÃO: Botão Consultor no modo escuro (menos brilhante) */
 .dark-mode .consultor {
-    background-color: #455a64;
+    background-color: #1e293b; /* Fundo escuro */
+    border: 2px solid #334155; /* Borda sutil */
+    color: #64b5f6; /* Azul claro para o texto */
 }
 
 .dark-mode .consultor:hover {
-    background-color: #546e7a;
-}
-
-.dark-mode .economize {
-    background-color: #455a64;
-}
-
-.dark-mode .economize:hover {
-    background-color: #546e7a;
+    background-color: #334155;
+    color: #ffffff;
 }
 
 .dark-mode .whatsapp {
-    background-color: #388e3c;
+    background-color: #166534; /* Verde um pouco mais fechado */
 }
+/* ------------------- */
 
-.dark-mode .whatsapp:hover {
-    background-color: #43a047;
-}
 
+/* PARTÍCULAS */
 .particle {
     position: absolute;
     border-radius: 50%;
     pointer-events: none;
     animation: particleAnimation 5s linear infinite;
+    background-color: rgba(79, 172, 254, 0.4);
 }
 
 @keyframes particleAnimation {
-    0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100vh) scale(0.5);
-        opacity: 0;
-    }
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
 }
 
-.particle {
-    background-color: rgba(163, 213, 247, 0.6);
-}
-
+/* CONTAINER PRINCIPAL (O "Banner") */
 .container {
     max-width: 480px;
     padding: 40px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.2);
+    background: #ffffff;
+    border-radius: 24px; /* Bordas mais arredondadas */
+    /* CORREÇÃO: Sombra muito mais forte para realce no modo claro */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0,0,0,0.05);
     text-align: center;
     z-index: 1;
-    transition: background 0.3s, box-shadow 0.3s;
+    transition: background 0.3s, box-shadow 0.3s, border 0.3s;
     width: 90%;
     box-sizing: border-box;
-    margin-top: 20px; /* Adicionado margem superior */
-    margin-bottom: 20px; /* Adicionado margem inferior */
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255,255,255,0.5); /* Borda sutil */
 }
 
 .profile-pic {
@@ -105,19 +93,22 @@ body.dark-mode {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 20px;
-    border: 5px solid #a3d5f7;
-    transition: transform 0.3s ease-in-out;
+    border: 5px solid transparent;
+    background: linear-gradient(#fff, #fff) padding-box,
+                linear-gradient(to right, #9c27b0, #e91e63) border-box;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+    box-shadow: 0 5px 15px rgba(156, 39, 176, 0.3); /* Sombra suave no aro */
 }
 
 .profile-pic:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 h1 {
     font-size: 28px;
     margin-bottom: 15px;
-    color: #0077cc;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    color: #1a1a1a; /* Preto quase total para contraste máximo */
+    font-weight: 900; /* Fonte mais pesada */
     transition: color 0.3s;
 }
 
@@ -125,73 +116,62 @@ p {
     font-size: 16px;
     line-height: 1.6;
     margin-bottom: 25px;
+    color: #555; /* Cinza um pouco mais escuro para leitura */
+    font-weight: 500;
     transition: color 0.3s;
 }
 
+/* BOTÕES GERAIS */
 .btn {
     display: block;
     width: 100%;
     margin: 15px 0;
-    padding: 15px;
+    padding: 16px;
     text-decoration: none;
-    font-weight: bold;
-    border-radius: 30px;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s, color 0.3s;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-weight: 700;
+    border-radius: 14px;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+    font-size: 16px;
 }
 
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-    transition: left 0.5s;
-    z-index: 1;
+/* BOTÃO DESTAQUE (Gradiente) */
+.economize {
+    background: linear-gradient(100deg, #6a82fb, #fc5c7d, #f9d423) !important;
+    color: #ffffff !important;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 5px 15px rgba(252, 92, 125, 0.4); /* Sombra colorida */
 }
 
-.btn:hover::before {
-    left: 100%;
-}
-
+/* CORREÇÃO: Botão Secundário no Modo Claro */
 .consultor {
-    background-color: #cceeff;
-    color: #003366;
+    background-color: #f0f7ff; /* Fundo levemente azulado, não branco */
+    color: #0066cc; /* Azul mais forte e legível */
+    border: 2px solid #4facfe; /* Borda mais grossa e definida */
 }
 
 .consultor:hover {
-    background-color: #b3e6ff;
-}
-
-.economize {
-    background-color: #cceeff;
-    color: #003366;
-}
-
-.economize:hover {
-    background-color: #b3e6ff;
+    background-color: #e1efff;
+    color: #0052a3;
 }
 
 .whatsapp {
-    background-color: #4CAF50;
+    background-color: #25d366;
     color: white;
-}
-
-.whatsapp:hover {
-    background-color: #45a049;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
 }
 
 .whatsapp i {
@@ -202,60 +182,29 @@ p {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: #0077cc;
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    transition: color 0.3s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     z-index: 2;
-}
-
-#theme-toggle:hover {
-    color: #0056b3;
+    transition: all 0.3s;
 }
 
 .dark-mode #theme-toggle {
-    color: #ffc107;
+    background: #334155;
+    border-color: #475569;
+    color: #fbbf24;
 }
 
-.dark-mode #theme-toggle:hover {
-    color: #e0a800;
-}
-
-.dark-mode .btn:link,
-.dark-mode .btn:visited {
-    color: #ddd;
-}
-
-/* Media query para telas menores */
 @media (max-width: 600px) {
-    body {
-        padding: 10px; /* Adicionado padding ao body */
-    }
-
-    .container {
-        padding: 20px;
-        width: 95%;
-        margin-top: 10px; /* Reduzido margem superior */
-        margin-bottom: 10px; /* Reduzido margem inferior */
-    }
-
-    .profile-pic {
-        width: 120px;
-        height: 120px;
-    }
-
-    h1 {
-        font-size: 24px;
-    }
-
-    p {
-        font-size: 15px;
-    }
-
-    .btn {
-        padding: 12px;
-        font-size: 15px;
-    }
+    .container { padding: 35px 25px; width: 92%; }
+    h1 { font-size: 24px; }
+    .btn { padding: 15px; }
 }
